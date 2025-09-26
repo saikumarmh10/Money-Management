@@ -1,0 +1,177 @@
+{
+  "sarvesh": [
+    {
+      "type": "income",
+      "amount": 3333,
+      "description": "dinner"
+    }
+  ],
+  "sai": [
+    {
+      "type": "income",
+      "amount": 333,
+      "description": "dinner"
+    },
+    {
+      "type": "expense",
+      "amount": 222,
+      "description": "eat"
+    },
+    {
+      "id": "6cde7a0f-fb52-4db5-917e-aa87eb03a3a4",
+      "type": "income",
+      "amount": 7000,
+      "description": "for work",
+      "createdAt": "2025-09-16T20:58:54.718Z"
+    },
+    {
+      "id": "c0c7c154-a013-4330-ab7e-ca3cb191f2cc",
+      "type": "income",
+      "amount": 400,
+      "description": "aisehi",
+      "createdAt": "2025-09-16T21:04:01.262Z"
+    },
+    {
+      "id": "7663974b-dc31-4e0c-9c38-95d13a3d20e2",
+      "type": "expense",
+      "amount": 500,
+      "description": "chocolate",
+      "createdAt": "2025-09-16T21:04:50.233Z"
+    },
+    {
+      "id": "cfe7788b-fc23-41b1-9ab7-cbd75194f6a5",
+      "type": "expense",
+      "amount": 300,
+      "description": "food",
+      "createdAt": "2025-09-16T21:10:20.697Z"
+    },
+    {
+      "id": "4a1de278-1bfe-40ec-b41c-150f9de5f4d5",
+      "type": "income",
+      "amount": 233,
+      "description": "din",
+      "createdAt": "2025-09-16T21:17:10.774Z"
+    },
+    {
+      "id": "156621db-d31f-48bd-9cec-c5e2b6d250fa",
+      "type": "income",
+      "amount": 4000,
+      "description": "dad given",
+      "createdAt": "2025-09-16T21:18:20.300Z"
+    },
+    {
+      "id": "126119e9-66a4-4c0b-a56a-1ebc16f23019",
+      "type": "expense",
+      "amount": 3000,
+      "description": "mera margi",
+      "createdAt": "2025-09-16T21:18:57.870Z"
+    },
+    {
+      "id": "851619be-a70e-4eef-a8c9-0b29db3d8873",
+      "type": "income",
+      "amount": 2000,
+      "description": "chocolate",
+      "createdAt": "2025-09-16T21:19:18.644Z"
+    },
+    {
+      "id": "05029c89-0d94-42af-851f-b9a02eec80c0",
+      "type": "income",
+      "amount": 4000,
+      "description": "din saheb",
+      "createdAt": "2025-09-16T21:20:18.352Z"
+    },
+    {
+      "id": "f7c532c7-f5d5-4485-8d72-948e5000374a",
+      "type": "expense",
+      "amount": 5000,
+      "description": "chocolate",
+      "createdAt": "2025-09-16T21:20:47.991Z"
+    },
+    {
+      "id": "bedde942-d482-449f-b1b5-8c4d9c15d973",
+      "type": "income",
+      "amount": 3000,
+      "description": "chocolate",
+      "category": "",
+      "createdAt": "2025-09-16T21:24:25.997Z"
+    }
+  ],
+  "anand": [
+    {
+      "type": "income",
+      "amount": 222,
+      "description": "professor"
+    }
+  ],
+  "nsb": [
+    {
+      "type": "income",
+      "amount": 200,
+      "description": "table"
+    }
+  ],
+  "abhi": [
+    {
+      "id": "6614cb75-ae26-4a71-9316-fbec2d7928a2",
+      "type": "income",
+      "amount": 22222,
+      "description": "play",
+      "createdAt": "2025-09-16T20:53:57.186Z"
+    },
+    {
+      "id": "941505a9-8e01-4002-ac70-69f08473a6b3",
+      "type": "expense",
+      "amount": 111,
+      "description": "games",
+      "createdAt": "2025-09-16T20:54:42.998Z"
+    },
+    {
+      "id": "b296123e-c094-476b-af26-f0633728f448",
+      "type": "expense",
+      "amount": 200,
+      "description": "chocolate",
+      "createdAt": "2025-09-16T21:10:58.364Z"
+    },
+    {
+      "id": "3d0b08b1-5b96-447b-928c-61ce85962812",
+      "type": "income",
+      "amount": 400,
+      "description": "dad given",
+      "createdAt": "2025-09-16T21:21:53.995Z"
+    },
+    {
+      "id": "ac195408-fe63-4019-84f1-598ef1360e19",
+      "type": "expense",
+      "amount": 3000,
+      "description": "for food",
+      "category": "",
+      "createdAt": "2025-09-16T21:23:24.824Z"
+    },
+    {
+      "id": "afc83ced-f02b-482f-9868-03cca26abe70",
+      "type": "income",
+      "amount": 575,
+      "description": "food",
+      "category": "",
+      "createdAt": "2025-09-16T21:27:09.133Z"
+    }
+  ],
+  "amrut": [
+    {
+      "id": "73e5fbed-25e8-47f3-92b1-9f1048340d33",
+      "type": "income",
+      "amount": 5000,
+      "description": "education",
+      "category": "education",
+      "createdAt": "2025-09-16T21:37:58.749Z"
+    },
+    {
+      "id": "fd95e381-ad4f-478e-a697-a9fcc12fdefe",
+      "type": "expense",
+      "amount": 300,
+      "description": "chocolate for friend",
+      "category": "shopping",
+      "createdAt": "2025-09-16T21:38:40.720Z"
+    }
+  ]
+}
