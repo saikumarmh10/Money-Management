@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Money Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>MY MONEY MANAGER</h1>
+    <div class="header-actions">
+      <button id="loginBtn">Login</button>
+      <button id="logoutBtn" style="display:none;">Logout</button>
+      <button id="themeToggle">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Dashboard Section -->
+    <section id="dashboard" hidden>
+      <!-- Animated Welcome Section -->
+      <div class="welcome-section">
+        <div class="welcome-content">
+          <h2 class="welcome-title">
+            <span class="greeting">Welcome back,</span>
+            <span id="userName" class="username-highlight">User</span>
+            <span class="emoji">👋</span>
+          </h2>
+          <div class="user-stats">
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-info">
+                <div class="stat-number" id="totalTransactions">0</div>
+                <div class="stat-label">Transactions</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-info">
+                <div class="stat-number" id="streakDays">0</div>
+                <div class="stat-label">Day Streak</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⭐</div>
+              <div class="stat-info">
+                <div class="stat-number" id="achievementCount">0</div>
+                <div class="stat-label">Achievements</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="welcome-animation">
+          <div class="floating-coins">
+            <div class="coin">💰</div>
+            <div class="coin">💸</div>
+            <div class="coin">💳</div>
+            <div class="coin">📈</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label for="filterType">Filter:</label>
+        <select id="filterType">
+          <option value="all">All</option>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+
+        <!-- Search transactions -->
+        <input type="text" id="searchInput" placeholder="Search transactions...">
+      </div>
+
+      <div class="summary">
+        <div class="balance">
+          <h3>Current Balance:</h3>
+          <p id="currentBalance">$0.00</p>
+        </div>
+        <div class="income">
+          <h3>Total Income:</h3>
+          <p id="totalIncome">$0.00</p>
+        </div>
+        <div class="expenses">
+          <h3>Total Expenses:</h3>
+          <p id="totalExpenses">$0.00</p>
+        </div>
+      </div>
+
+      <!-- Financial Overview Charts -->
+      <div class="charts-container">
+        <div class="chart-card">
+          <h3>Income vs Expenses</h3>
+          <div class="chart-container">
+            <canvas id="incomeExpenseChart" width="300" height="200"></canvas>
+          </div>
+        </div>
+        
+        <div class="chart-card">
+          <h3>Expense Breakdown</h3>
+          <div class="chart-container">
+            <canvas id="expensePieChart" width="300" height="200"></canvas>
+          </div>
+        </div>
+        
+        <div class="chart-card">
+          <h3>Financial Health</h3>
+          <div class="health-metrics">
+            <div class="metric">
+              <div class="metric-label">Savings Rate</div>
+              <div class="metric-value" id="savingsRate">0%</div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="savingsProgress"></div>
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Expense Ratio</div>
+              <div class="metric-value" id="expenseRatio">0%</div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="expenseProgress"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievement and Goals Section -->
+      <div class="achievements-section">
+        <div class="section-header">
+          <h3>🏆 Achievements & Goals</h3>
+          <button id="toggleAchievements" class="toggle-btn">Show All</button>
+        </div>
+        <div id="achievementsContainer" class="achievements-container">
+          <div class="achievement-item earned" data-achievement="first-transaction">
+            <div class="achievement-icon">🎉</div>
+            <div class="achievement-info">
+              <div class="achievement-title">First Transaction</div>
+              <div class="achievement-desc">Added your first transaction</div>
+            </div>
+            <div class="achievement-status">✅</div>
+          </div>
+          <div class="achievement-item" data-achievement="savings-master">
+            <div class="achievement-icon">💰</div>
+            <div class="achievement-info">
+              <div class="achievement-title">Savings Master</div>
+              <div class="achievement-desc">Save $1000 or more</div>
+            </div>
+            <div class="achievement-status">🔒</div>
+          </div>
+          <div class="achievement-item" data-achievement="transaction-streak">
+            <div class="achievement-icon">🔥</div>
+            <div class="achievement-info">
+              <div class="achievement-title">Transaction Streak</div>
+              <div class="achievement-desc">Add transactions for 7 days</div>
+            </div>
+            <div class="achievement-status">🔒</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financial Goals Tracker -->
+      <div class="goals-section">
+        <div class="section-header">
+          <h3>🎯 Financial Goals</h3>
+          <button id="addGoalBtn" class="add-goal-btn">+ Add Goal</button>
+        </div>
+        <div id="goalsContainer" class="goals-container">
+          <div class="goal-item">
+            <div class="goal-info">
+              <div class="goal-title">Emergency Fund</div>
+              <div class="goal-target">Target: $5,000</div>
+            </div>
+            <div class="goal-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 25%"></div>
+              </div>
+              <div class="progress-text">25% Complete</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button id="addTransactionBtn" class="primary-btn">
+          <span>+ Add New Transaction</span>
+          <div class="btn-shine"></div>
+        </button>
+        <button id="addAnotherBtn" class="secondary-btn" style="display: none;">
+          <span>+ Add Another Transaction</span>
+        </button>
+        <button id="exportDataBtn" class="export-btn">
+          <span>📊 Export Data</span>
+        </button>
+      </div>
+      <ul id="transactionList"></ul>
+    </section>
+
+    <!-- Transaction Form Section -->
+    <section id="transactionForm" class="transaction-form-section" style="display: none;">
+      <div class="form-container">
+        <div class="form-header">
+          <h2>Add New Transaction</h2>
+          <button id="backToDashboard" class="back-btn">← Back to Dashboard</button>
+        </div>
+        
+        <form id="transactionFormElement" class="transaction-form">
+          <div class="form-group">
+            <label for="transactionType">Transaction Type</label>
+            <select id="transactionType" required>
+              <option value="">Select Type</option>
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="transactionAmount">Amount</label>
+            <input type="number" id="transactionAmount" step="0.01" min="0" placeholder="0.00" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="transactionDescription">Description</label>
+            <input type="text" id="transactionDescription" placeholder="Enter description" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="transactionCategory">Category (Optional)</label>
+            <select id="transactionCategory">
+              <option value="">Select Category</option>
+              <option value="food">Food & Dining</option>
+              <option value="transportation">Transportation</option>
+              <option value="shopping">Shopping</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="bills">Bills & Utilities</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="education">Education</option>
+              <option value="salary">Salary</option>
+              <option value="freelance">Freelance</option>
+              <option value="investment">Investment</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" id="cancelTransaction" class="cancel-btn">Cancel</button>
+            <button type="submit" class="submit-btn">
+              <span>Add Transaction</span>
+              <div class="btn-shine"></div>
+            </button>
+          </div>
+        </form>
+        
+        <div id="transactionMessage" class="transaction-message"></div>
+      </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="loginSection" class="auth-section">
+      <div class="auth-container">
+        <div class="auth-tabs">
+          <button class="tab-btn active" id="loginTab">Login</button>
+          <button class="tab-btn" id="registerTab">Register</button>
+        </div>
+        
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active">
+          <h2>Welcome Back!</h2>
+          <div class="input-group">
+            <input type="text" id="usernameInput" placeholder="Username" required>
+            <span class="input-icon">👤</span>
+          </div>
+          <div class="input-group">
+            <input type="password" id="passwordInput" placeholder="Password" required>
+            <span class="input-icon">🔒</span>
+          </div>
+          <button type="submit" class="auth-btn login-btn">
+            <span>Login</span>
+            <div class="btn-shine"></div>
+          </button>
+        </form>
+        
+        <!-- Register Form -->
+        <form id="registerForm" class="auth-form">
+          <h2>Create Account</h2>
+          <div class="input-group">
+            <input type="text" id="regUsernameInput" placeholder="Username" required>
+            <span class="input-icon">👤</span>
+          </div>
+          <div class="input-group">
+            <input type="password" id="regPasswordInput" placeholder="Password" required>
+            <span class="input-icon">🔒</span>
+          </div>
+          <div class="input-group">
+            <input type="password" id="confirmPasswordInput" placeholder="Confirm Password" required>
+            <span class="input-icon">🔐</span>
+          </div>
+          <button type="submit" class="auth-btn register-btn">
+            <span>Register</span>
+            <div class="btn-shine"></div>
+          </button>
+        </form>
+        
+        <div id="authMessage" class="auth-message"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // === Extra Features ===
+
+    // Dark/Light Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+
+    // Example: Search Transactions
+    const searchInput = document.getElementById('searchInput');
+    const transactionList = document.getElementById('transactionList');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const items = transactionList.querySelectorAll('li');
+      items.forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(query) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
